@@ -5,12 +5,22 @@ import Footer from './components/Footer'
 import './App.css'
 
 export default class App extends Component {
+
+  state = {
+    todos:[
+      {id:'001',name:"Have Lunch", done:false},
+      {id:'002',name:"Play game", done:false},
+      {id:'003',name:"Coding", done:true},
+    ]
+
+  }
+
   render() {
     return (
       <div className="todo-container">
         <div className="todo-wrap">
           <Header/>
-          <List/>
+          <List todos={this.state.todos}/>
           <Footer/>
         </div>
   </div>
