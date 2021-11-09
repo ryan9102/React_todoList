@@ -12,14 +12,18 @@ export default class App extends Component {
       {id:'002',name:"Play game", done:false},
       {id:'003',name:"Coding", done:true},
     ]
+  }
 
+  addTodo = (todoObj)=>{
+    const {todos} = this.state
+    this.setState({todos:[todoObj,...todos]})
   }
 
   render() {
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header/>
+          <Header addTodo={this.addTodo}/>
           <List todos={this.state.todos}/>
           <Footer/>
         </div>
