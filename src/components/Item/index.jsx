@@ -20,6 +20,14 @@ export default class Item extends Component {
     this.setState({mouseIn:false})
 }
 
+handleDelete=(id)=>{
+  return ()=>{
+    if(window.confirm('Confirm Delete?')){
+      this.props.deleteTodo(id)      
+    } 
+  }
+}
+
     render() {
       const {id,name,done} = this.props
       const{mouseIn}= this.state
@@ -30,7 +38,7 @@ export default class Item extends Component {
               <input type="checkbox" checked={done} onChange={this.handleCheck(id)}/>
               <span>{name}</span>
             </label>
-            <button className="btn btn-danger" style={{display: mouseIn? 'block' : 'none'}}>删除</button>
+            <button className="btn btn-danger" onClick={this.handleDelete(id)}  style={{display: mouseIn? 'block' : 'none'}}>删除</button>
           </li>
         )
     }
